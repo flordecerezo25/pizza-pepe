@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Don Pepe | 25 Años de Tradición</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #C40C0C;
+            --accent-orange: #FF6500;
+            --secondary: #CC561E;
+            --sand: #F6CE71;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fffaf0;
+        }
+
+        .bg-primary { background-color: var(--primary); }
+        .text-primary { color: var(--primary); }
+        .bg-orange { background-color: var(--accent-orange); }
+        .bg-secondary { background-color: var(--secondary); }
+        .bg-sand { background-color: var(--sand); }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--sand);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .pizza-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pizza-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .btn-custom {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-custom:hover {
+            background-color: var(--accent-orange);
+            transform: scale(1.05);
+        }
+        
+        .map-container {
+            background-image: url('https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navegación -->
+    <header class="fixed w-full z-50 bg-primary shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-white font-bold text-2xl flex items-center gap-2">
+                <i class="fas fa-pizza-slice text-sand"></i>
+                <span>PIZZA DON PEPE</span>
+            </div>
+            
+            <!-- Botón Menú Móvil -->
+            <div class="md:hidden text-white" id="mobile-menu-btn">
+                <i class="fas fa-bars text-2xl cursor-pointer"></i>
+            </div>
+
+            <!-- Enlaces Escritorio -->
+            <ul class="hidden md:flex space-x-8 text-white font-medium uppercase text-sm tracking-wider">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#menu" class="nav-link">Elige tu Pizza</a></li>
+                <li><a href="#resenas" class="nav-link">Reseñas</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
+        <!-- Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary pb-6 px-6 text-white transition-all duration-300">
+            <ul class="flex flex-col space-y-4 font-medium uppercase text-sm">
+                <li><a href="#inicio" onclick="toggleMenu()">Inicio</a></li>
+                <li><a href="#menu" onclick="toggleMenu()">Elige tu Pizza</a></li>
+                <li><a href="#resenas" onclick="toggleMenu()">Reseñas</a></li>
+                <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Sección: Inicio -->
+    <section id="inicio" class="hero-section h-screen flex items-center justify-center text-center text-white pt-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-sand font-bold tracking-widest uppercase mb-4">Sabor artesanal desde 1999</h2>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">25 AÑOS DE PASIÓN POR LA PIZZA</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-light">
+                Descubre por qué somos los favoritos del barrio. Recetas tradicionales, ingredientes frescos y mucho amor en cada masa.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#menu" class="btn-custom">Ver Menú</a>
+                <a href="#contacto" class="bg-white text-primary px-8 py-3 rounded-full font-bold hover:bg-sand transition-all">Pide Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Elige tu Pizza (Menú) -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">Nuestras Especialidades</h2>
+                <div class="h-1 w-24 bg-secondary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-xl mx-auto italic">Seleccionamos los mejores ingredientes para que cada bocado sea una experiencia inolvidable.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Producto Pizza -->
+                <div class="pizza-card rounded-2xl overflow-hidden bg-white shadow-md border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=1000&auto=format&fit=crop" alt="Pizza Margarita Receta Original" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Margarita Especial</h3>
+                            <span class="text-secondary font-bold">$12.90</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Tomates frescos, mozzarella premium, albahaca orgánica y aceite de oliva extra virgen.</p>
+                        <button class="w-full py-2 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all">Agregar al pedido</button>
+                    </div>
+                </div>
+
+                <!-- Producto Pizza -->
+                <div class="pizza-card rounded-2xl overflow-hidden bg-white shadow-md border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=1000&auto=format&fit=crop" alt="Pizza Pepperoni Clásica" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Pepperoni Don Pepe</h3>
+                            <span class="text-secondary font-bold">$14.50</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Nuestra pizza estrella con pepperoni crujiente y una mezcla secreta de 3 quesos.</p>
+                        <button class="w-full py-2 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all">Agregar al pedido</button>
+                    </div>
+                </div>
+
+                <!-- Producto Pizza -->
+                <div class="pizza-card rounded-2xl overflow-hidden bg-white shadow-md border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?q=80&w=1000&auto=format&fit=crop" alt="Pizza Vegetariana Fresca" class="w-full h-56 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">La Huerta</h3>
+                            <span class="text-secondary font-bold">$13.00</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Pimientos, champiñones, cebolla morada, aceitunas negras y maíz dulce de temporada.</p>
+                        <button class="w-full py-2 border-2 border-primary text-primary font-bold rounded-lg hover:bg-primary hover:text-white transition-all">Agregar al pedido</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Reseñas -->
+    <section id="resenas" class="py-24 bg-sand bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-primary mb-16">Lo que dicen nuestros clientes</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm relative italic border-t-4 border-secondary">
+                    <i class="fas fa-quote-left text-orange text-3xl mb-4 opacity-30"></i>
+                    <p class="text-gray-700 mb-6">"He venido a Pizza Don Pepe desde que era niño. La calidad nunca ha bajado en 25 años. ¡La masa es increíble!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white">R</div>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">Ricardo G.</p>
+                            <p class="text-xs text-secondary italic">Cliente Fiel</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm relative italic border-t-4 border-secondary">
+                    <i class="fas fa-quote-left text-orange text-3xl mb-4 opacity-30"></i>
+                    <p class="text-gray-700 mb-6">"La mejor relación calidad-precio de la ciudad. El servicio es siempre amable y la entrega es súper rápida."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white">M</div>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">Marta S.</p>
+                            <p class="text-xs text-secondary italic">Guía Local</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm relative italic border-t-4 border-secondary">
+                    <i class="fas fa-quote-left text-orange text-3xl mb-4 opacity-30"></i>
+                    <p class="text-gray-700 mb-6">"¡La pizza de Pepperoni es de otro planeta! Se nota la frescura de los ingredientes en cada mordida. Muy recomendado."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white">J</div>
+                        <div>
+                            <p class="font-bold text-gray-800 text-sm">Juan P.</p>
+                            <p class="text-xs text-secondary italic">Foodie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección: Contacto y Ubicación -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-16">
+                <!-- Información de Contacto -->
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold text-primary mb-6">Encuéntranos</h2>
+                    <p class="text-gray-600 mb-10">Estamos ubicados en el corazón de la ciudad. Ven a disfrutar del aroma a leña y la mejor atención.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-sand bg-opacity-40 rounded-full flex items-center justify-center text-secondary">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Dirección Principal</h4>
+                                <p class="text-gray-600">Av. de la Tradición #123, Centro Histórico</p>
+                                <p class="text-gray-500 text-sm">Cerca de la Plaza de Armas</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-sand bg-opacity-40 rounded-full flex items-center justify-center text-secondary">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Pedidos y Reservas</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567</p>
+                                <p class="text-gray-600">+1 (555) 987-6543</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-sand bg-opacity-40 rounded-full flex items-center justify-center text-secondary">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-lg">Horarios de Atención</h4>
+                                <p class="text-gray-600">Lunes a Domingo</p>
+                                <p class="text-gray-600 font-bold">12:00 PM - 11:30 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Representación Visual del Mapa -->
+                    <div class="mt-10 rounded-2xl overflow-hidden h-64 shadow-inner relative group cursor-pointer">
+                        <div class="absolute inset-0 map-container grayscale group-hover:grayscale-0 transition-all duration-500"></div>
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center text-white p-4">
+                            <i class="fas fa-location-arrow text-4xl mb-3 text-sand"></i>
+                            <span class="font-bold text-lg">Ver en Google Maps</span>
+                            <p class="text-sm opacity-80 mt-1 italic">Calle Principal #123, Ciudad Pizza</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="lg:w-1/2 bg-gray-50 p-8 md:p-12 rounded-3xl shadow-xl border border-gray-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-8 flex items-center gap-3">
+                        <i class="fas fa-envelope text-primary"></i> Escríbenos
+                    </h3>
+                    <form id="contact-form" class="space-y-5" onsubmit="event.preventDefault(); alert('¡Gracias! Hemos recibido tu mensaje en Pizza Don Pepe.');">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2 tracking-wide uppercase">Nombre Completo</label>
+                            <input type="text" placeholder="Tu nombre" class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2 tracking-wide uppercase">Correo Electrónico</label>
+                            <input type="email" placeholder="email@ejemplo.com" class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2 tracking-wide uppercase">Mensaje</label>
+                            <textarea rows="4" placeholder="¿Cómo podemos ayudarte hoy?" class="w-full px-4 py-4 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-secondary text-white font-bold py-4 rounded-xl hover:bg-orange shadow-lg transition-all transform hover:-translate-y-1">
+                            Enviar Mensaje Ahora
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-2">PIZZA DON PEPE</h2>
+                <p class="text-sand font-light tracking-widest uppercase text-sm">Desde 1999 cultivando la tradición</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8 text-2xl">
+                <a href="#" class="hover:text-sand transition-all transform hover:scale-125"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="hover:text-sand transition-all transform hover:scale-125"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-sand transition-all transform hover:scale-125"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="border-t border-white border-opacity-20 pt-8">
+                <p class="text-sm opacity-60 italic">&copy; 2026 Pizza Don Pepe. Todos los derechos reservados. 25 Años contigo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+    </script>
+</body>
+</html>
